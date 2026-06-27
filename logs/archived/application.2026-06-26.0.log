@@ -1,4 +1,0 @@
-LOG_PATTERN_IS_UNDEFINEDLOG_PATTERN_IS_UNDEFINEDLOG_PATTERN_IS_UNDEFINEDLOG_PATTERN_IS_UNDEFINED2026-06-26 23:48:47.948 [main] INFO  c.cm.CustomerManagementApplication - Starting CustomerManagementApplication using Java 21.0.7 with PID 7724 (C:\Users\kle20\IdeaProjects\customer-management-application\target\classes started by KLE20 in C:\Users\kle20\IdeaProjects\customer-management-application)
-2026-06-26 23:48:47.950 [main] DEBUG c.cm.CustomerManagementApplication - Running with Spring Boot v3.5.11, Spring v6.2.16
-2026-06-26 23:48:47.952 [main] INFO  c.cm.CustomerManagementApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-26 23:48:53.666 [main] INFO  c.cm.CustomerManagementApplication - Started CustomerManagementApplication in 6.612 seconds (process running for 7.38)
