@@ -1,0 +1,47 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: customer-management-application
+
+  # MSSQL Database connection - Local machine, database name TESTDB
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=TESTDB;encrypt=true;trustServerCertificate=true
+    username: user
+    password: Password
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+    open-in-view: false
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Kuala_Lumpur
+
+logging:
+  level:
+    root: INFO
+    com.cm: DEBUG
+    org.hibernate.SQL: DEBUG
+
+# Application specific properties
+# Path of the internal mock "3rd-party" country API
+# (com.cm.mock.controller.MockCountryController).
+app:
+  third-party:
+    country-service-path: /api/mock/countries
+
+logging.request-response.enabled: true
