@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "12fccd5e-9c58-43dd-a143-76bee05c8c59",
+    "_postman_id": "8535a250-4d37-46d0-8458-0e4cb6735dce",
     "name": "Customer Management Application",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "10634258"
@@ -44,19 +44,17 @@
           "raw": "{\n    \"firstName\": \"Alex\",\n    \"lastName\": \"Lee\",\n    \"email\": \"alex@example.com\",\n    \"country\": \"malaysia\",\n    \"dateOfBirth\": \"1990-01-15\"\n}"
         },
         "url": {
-          "raw": "http://localhost:8080/api/v1/customers",
-          "protocol": "http",
+          "raw": "{{baseUrl}}/api/v1/customers",
           "host": [
-            "localhost"
+            "{{baseUrl}}"
           ],
-          "port": "8080",
           "path": [
             "api",
             "v1",
             "customers"
           ]
         },
-        "description": "Creates a new employee record. Service method is annotated with @Transactional."
+        "description": "Creates a new customer record. Service method is annotated with @Transactional."
       },
       "response": []
     },
@@ -75,12 +73,10 @@
           "raw": "{\n    \"firstName\": \"Alex\",\n    \"lastName\": \"Lee\",\n    \"email\": \"elex2@example.com\",\n    \"country\": \"Malaysia\"\n}"
         },
         "url": {
-          "raw": "http://localhost:8080/api/v1/customers/{{customerId}}",
-          "protocol": "http",
+          "raw": "{{baseUrl}}/api/v1/customers/{{customerId}}",
           "host": [
-            "localhost"
+            "{{baseUrl}}"
           ],
-          "port": "8080",
           "path": [
             "api",
             "v1",
@@ -88,22 +84,20 @@
             "{{customerId}}"
           ]
         },
-        "description": "Updates an existing employee. Service method is annotated with @Transactional."
+        "description": "Updates an existing customer. Service method is annotated with @Transactional."
       },
       "response": []
     },
     {
-      "name": "3. Get Customer By Id",
+      "name": "3. Get Customer",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/v1/customers/{{customerId}}",
-          "protocol": "http",
+          "raw": "{{baseUrl}}/api/v1/customers/{{customerId}}",
           "host": [
-            "localhost"
+            "{{baseUrl}}"
           ],
-          "port": "8080",
           "path": [
             "api",
             "v1",
@@ -111,22 +105,20 @@
             "{{customerId}}"
           ]
         },
-        "description": "Fetches a single employee by id. Service method is annotated with @Transactional(readOnly = true)."
+        "description": "Fetches a single customer by id. Service method is annotated with @Transactional(readOnly = true)."
       },
       "response": []
     },
     {
-      "name": "4. Get All Customer",
+      "name": "4. Get All Customers",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/v1/customers?page=0&sortBy=id&sortDir=asc&size=5",
-          "protocol": "http",
+          "raw": "{{baseUrl}}/api/v1/customers",
           "host": [
-            "localhost"
+            "{{baseUrl}}"
           ],
-          "port": "8080",
           "path": [
             "api",
             "v1",
@@ -135,95 +127,12 @@
           "query": [
             {
               "key": "page",
-              "value": "0"
-            },
-            {
-              "key": "sortBy",
-              "value": "id"
-            },
-            {
-              "key": "sortDir",
-              "value": "asc"
+              "value": "0",
+              "disabled": true
             },
             {
               "key": "size",
-              "value": "5"
-            }
-          ]
-        },
-        "description": "Returns a fixed page size of 10 records. Change 'page' to navigate (page=1, page=2, ...). Service method is annotated with @Transactional(readOnly = true)."
-      },
-      "response": []
-    },
-    {
-      "name": "5. Get Enriched Customer information",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:8080/api/v1/customers/{{customerId}}/enriched",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "v1",
-            "customers",
-            "{{customerId}}",
-            "enriched"
-          ]
-        },
-        "description": "Demonstrates: Postman -> this API -> 3rd-party RestCountries API (https://restcountries.com). The employee's 'country' field is used to fetch capital, region, population, currency, and flag from the external API and merge it into the response."
-      },
-      "response": []
-    },
-    {
-      "name": "6. Delete Employee",
-      "request": {
-        "method": "DELETE",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:8080/api/v1/customers/{{customerId}}",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "v1",
-            "customers",
-            "{{customerId}}"
-          ]
-        },
-        "description": "Deletes an employee by id."
-      },
-      "response": []
-    },
-    {
-      "name": "7. Get Mock Country",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:8080/api/mock/countries/{{countryName}}",
-          "protocol": "http",
-          "host": [
-            "localhost"
-          ],
-          "port": "8080",
-          "path": [
-            "api",
-            "mock",
-            "countries",
-            "{{countryName}}"
-          ],
-          "query": [
-            {
-              "key": "page",
-              "value": "0",
+              "value": "10",
               "disabled": true
             },
             {
@@ -235,16 +144,94 @@
               "key": "sortDir",
               "value": "asc",
               "disabled": true
-            },
-            {
-              "key": "size",
-              "value": "5",
-              "type": "text",
-              "disabled": true
             }
           ]
         },
-        "description": "Returns a fixed page size of 10 records. Change 'page' to navigate (page=1, page=2, ...). Service method is annotated with @Transactional(readOnly = true)."
+        "description": "Returns a page of records, defaulting to 10 per page. Change 'page' to  \nnavigate (page=1, page=2, ...) and 'size' to control how many records are  \nreturned per page. Service method is annotated with @Transactional(readOnly = true)."
+      },
+      "response": []
+    },
+    {
+      "name": "5. Get Enriched Customer information",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/customers/{{customerId}}/enriched",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "customers",
+            "{{customerId}}",
+            "enriched"
+          ]
+        },
+        "description": "Demonstrates: Postman -> this API ->com.cm.mock. The customer's country field is used to look up countryName, officialName, and region from a hardcoded in-memory data store and merge it into the response."
+      },
+      "response": []
+    },
+    {
+      "name": "6. Delete Customer",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/customers/{{customerId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "customers",
+            "{{customerId}}"
+          ]
+        },
+        "description": "Deletes a customer by id."
+      },
+      "response": []
+    },
+    {
+      "name": "7. Get Mock Country",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/mock/countries/{{countryName}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "mock",
+            "countries",
+            "{{countryName}}"
+          ]
+        },
+        "description": "Fetch enriched country details for a specific country"
+      },
+      "response": []
+    },
+    {
+      "name": "8. Get Mock List Country",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/mock/countries",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "mock",
+            "countries"
+          ]
+        },
+        "description": "List all seeded countries in the mock dataset"
       },
       "response": []
     }
@@ -276,7 +263,7 @@
   "variable": [
     {
       "key": "baseUrl",
-      "value": ""
+      "value": "http://localhost:8080"
     },
     {
       "key": "customerId",
